@@ -1,7 +1,10 @@
 #include <iostream>
-#include "ClassePessoa.cpp"
 #include <fstream>
 #include <sstream>
+
+#include "ClassePessoa.cpp"
+#include "DadosNumeriocos.cpp"
+#include "AlgoritmosDeOrdenacao.cpp"
 
 using namespace std;
 
