@@ -61,9 +61,10 @@ class Pessoa {
 	public:
 
 
-		
+		//Construtor
 		Pessoa(string nome, string dataNascimento, float peso, float altura) {
 			this->nome = nome;
+			this-> dataNascimento = dataNascimento;
 			this->idade = CalcularIdade(dataNascimento);
 			this->peso = peso;
 			this->altura = altura;
