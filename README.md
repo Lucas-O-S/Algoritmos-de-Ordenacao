@@ -1,4 +1,4 @@
-# AlgoritmosDeOrdenacao
+# Algoritmos de Ordenacao
 
 Esta atividade possui o objetivo de testar a velocidade dos algoritimos de ordenação 
 
