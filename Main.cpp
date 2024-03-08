@@ -37,11 +37,9 @@ int DefinirTamanhoVetor(string nomeArquivo){
     
 }
 
-//metodo para retornar um ponteiro de ponteiro de um vetor de uma classe
-Pessoa** CriarVetorPessoa(string nomeArquivo, int tamanho){
+//metodo para adicionar valores ao array
+void CriarVetorPessoa(string nomeArquivo,  Pessoa* arranjoPessoas){
     
-    //Cria o ponteiro de ponteiro de vetor a partir de um ponteiro de vetor que criar um vetor dinamico
-    Pessoa** vetorPessoa = new Pessoa*[tamanho];
 
     //arquivo
     fstream  arquivo(nomeArquivo);
@@ -51,7 +49,7 @@ Pessoa** CriarVetorPessoa(string nomeArquivo, int tamanho){
 
     int indice = 0;
 
-        //Enquanto receber linhas ira adicionar novos membro ao arranjo
+    //Enquanto receber linhas ira adicionar novos membro ao arranjo
       while(getline(arquivo, linha )){
 
         //Strean de dados
@@ -75,7 +73,7 @@ Pessoa** CriarVetorPessoa(string nomeArquivo, int tamanho){
 
 
         //Salva uma nova pessoa ao vetor dinamico
-        vetorPessoa[indice] = new Pessoa(nome,dataNascimento,peso,altura);
+        arranjoPessoas[indice].AddValoresPessoa(nome,dataNascimento,peso,altura);
 
         
         indice++;
@@ -83,7 +81,6 @@ Pessoa** CriarVetorPessoa(string nomeArquivo, int tamanho){
 
     
     //Retorna o ponteiro de ponteiro
-    return vetorPessoa;
 
 
 
@@ -105,15 +102,18 @@ int main()
         return -1;
     }
 
-    //Cria um ponteiro de ponteiro de vetor para criar um vetor dinamico para uma metodo que devolve um vetor de uma classe
-    Pessoa** vetorPessoa = CriarVetorPessoa(arquivoCSV, tamanhoVetor);
-    
+    //Cria array dinamico
+    Pessoa* arranjoPessoas = new Pessoa[tamanhoVetor];
+
+
+    CriarVetorPessoa(arquivoCSV,arranjoPessoas);
     
     //Teste para ver se foi salvo
-    cout << vetorPessoa[1]->GetNome() << " - " << vetorPessoa[1]->GetIdade() << " - " << vetorPessoa[1]->GetPeso()  << " - " << vetorPessoa[1]->GetAltura() ;
+    cout << arranjoPessoas[1].GetNome() << " - " << arranjoPessoas[1].GetIdade() << " - " << arranjoPessoas[1].GetPeso()  << " - " << arranjoPessoas[1].GetAltura() ;
 
    
 
     
 }
+
 
