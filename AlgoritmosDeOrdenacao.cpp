@@ -151,6 +151,7 @@ void SelectionSort(Pessoa pessoas[], int tamanho){
 
 }
 
+//MergeSort
 void Merge(Pessoa pessoas[], int inicio, int meio, int fim){
     int tamanhoEsq = meio - inicio +1;
     int tamanhoDir = fim - meio;
@@ -237,6 +238,8 @@ void IniciarMergeSort(Pessoa pessoas[], int tamanho){
 
 }
 
+
+//Quick Sort
 int particao(Pessoa pessoas[], int inicio, int fim){
     int pivo = pessoas[fim].GetIdade();
 
