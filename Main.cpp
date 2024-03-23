@@ -96,7 +96,7 @@ int main()
 
     //Cria uma contante de tamannho do vetor com a função a seguir
     const int tamanhoVetor = DefinirTamanhoVetor(arquivoCSV);
-
+    
     //Se o tamanho retornar -1 para o programa
     if(tamanhoVetor == -1){
         return -1;
@@ -107,13 +107,12 @@ int main()
 
 
     CriarVetorPessoa(arquivoCSV,arranjoPessoas);
-    
-    //Teste para ver se foi salvo
-    cout << arranjoPessoas[1].GetNome() << " - " << arranjoPessoas[1].GetIdade() << " - " << arranjoPessoas[1].GetPeso()  << " - " << arranjoPessoas[1].GetAltura() ;
 
-   
 
+    BubbleSort(arranjoPessoas, tamanhoVetor);
+    InsertionSort(arranjoPessoas, tamanhoVetor);
+    SelectionSort(arranjoPessoas, tamanhoVetor);
+    IniciarMergeSort(arranjoPessoas,tamanhoVetor);
+    IniciarQuickSort(arranjoPessoas,tamanhoVetor);
     
 }
-
-

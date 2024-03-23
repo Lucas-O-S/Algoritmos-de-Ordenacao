@@ -20,6 +20,7 @@ class Pessoa {
 
 		
 		int CalcularIdade(string dataNascimento) {
+			
 
 			//Cria um variavel de stringstreams para separar a data de nascimento  de uma string
 			istringstream ss(dataNascimento);
@@ -55,6 +56,14 @@ class Pessoa {
 			
 			return idade;
 		}
+	
+		string CaixaAlta(string texto){
+
+			for(char &c: texto){
+				c = toupper(c);
+			}
+			return texto;
+		}
 	;
 
 	public:
@@ -71,6 +80,7 @@ class Pessoa {
 		}
 
 		string GetNome() {
+			
 			return nome;
 		}
 
@@ -84,6 +94,12 @@ class Pessoa {
 
 		float GetAltura() {
 			return altura;
+		}
+
+
+		void ExibirPessoa(){
+			    cout << "\n" << nome << " - " << idade << " - " << peso  << " - " << altura << endl;
+
 		}
 
 	;
