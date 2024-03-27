@@ -241,7 +241,7 @@ void IniciarMergeSort(Pessoa pessoas[], int tamanho, int escolha){
 
 //Quick Sort
 int particao(Pessoa pessoas[], int inicio, int fim, int escolha){
-    int pivo = pessoas[fim].EscolhaDado(escolha) ;
+    float pivo = pessoas[fim].EscolhaDado(escolha) ;
 
     int i = inicio-1;
 

@@ -116,7 +116,6 @@ int main()
         cout << "Escolha: ";
         cin >> escolha;
 
-        cout << escolha;
 
 
         if(escolha < 0 || escolha > 3){
