@@ -98,8 +98,31 @@ class Pessoa {
 
 
 		void ExibirPessoa(){
-			    cout << "\n" << nome << " - " << idade << " - " << peso  << " - " << altura << endl;
+			    cout << "\n" << nome << " - " << idade << " anos - " << peso  << " KG - " << altura << " metros" << endl;
 
+		}
+
+		//Permite escolher qual dado comparar
+		float EscolhaDado(int escolha){
+			switch (escolha)
+			{
+			case 1:
+				return idade;
+			break;
+			
+			case 2:
+				return peso;
+			break;
+
+			case 3:
+
+				return altura;
+			break;
+			default:
+
+				return idade;
+			break;
+			}
 		}
 
 	;

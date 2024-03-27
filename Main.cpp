@@ -108,11 +108,38 @@ int main()
 
     CriarVetorPessoa(arquivoCSV,arranjoPessoas);
 
+    int escolha;
 
-    BubbleSort(arranjoPessoas, tamanhoVetor);
-    InsertionSort(arranjoPessoas, tamanhoVetor);
-    SelectionSort(arranjoPessoas, tamanhoVetor);
-    IniciarMergeSort(arranjoPessoas,tamanhoVetor);
-    IniciarQuickSort(arranjoPessoas,tamanhoVetor);
+    while(true){
+        cout << "Deseja organizar arranjo com bese em qual parametro:";
+        cout << "\n- 1: IDADE \n- 2: PESO \n- 3: ALTURA " << endl;
+        cout << "Escolha: ";
+        cin >> escolha;
+
+        cout << escolha;
+
+
+        if(escolha < 0 || escolha > 3){
+            cout << "-- Valor invalido --" << endl;
+        }
+
+        else{
+            if(escolha - static_cast<int>(escolha) != 0){
+                cout << "-- Valor invalido --" << endl;
+
+            }
+            else{
+                break;
+
+            }
+        }   
+
+    }
+
+    BubbleSort(arranjoPessoas, tamanhoVetor,escolha);
+    InsertionSort(arranjoPessoas, tamanhoVetor,escolha);
+    SelectionSort(arranjoPessoas, tamanhoVetor,escolha);
+    IniciarMergeSort(arranjoPessoas,tamanhoVetor,escolha);
+    IniciarQuickSort(arranjoPessoas,tamanhoVetor,escolha);
     
 }

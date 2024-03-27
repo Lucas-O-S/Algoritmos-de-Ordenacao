@@ -24,7 +24,7 @@ void ExibirArranjo(Pessoa arranjo[], int tamanho){
     }
 }
 
-void BubbleSort(Pessoa pessoas[], int tamanho){
+void BubbleSort(Pessoa pessoas[], int tamanho, int escolha){
     
     //Ajeitando antes de começar
     Pessoa* pessoasCopia = new Pessoa[tamanho];
@@ -40,7 +40,7 @@ void BubbleSort(Pessoa pessoas[], int tamanho){
         
         for(int j = 0; j < tamanho -1; j++){
             
-            if(pessoasCopia[j].GetIdade() >= pessoasCopia[j+1].GetIdade()){
+            if(pessoasCopia[j].EscolhaDado(escolha) >= pessoasCopia[j+1].EscolhaDado(escolha) ){
                 Pessoa temp = pessoasCopia[j];
                 pessoasCopia[j] = pessoasCopia[j+1];
                 pessoasCopia[j+1] = temp;
@@ -67,7 +67,7 @@ void BubbleSort(Pessoa pessoas[], int tamanho){
 }
 
 //Insertion Sort:
-void InsertionSort(Pessoa pessoas[], int tamanho){
+void InsertionSort(Pessoa pessoas[], int tamanho, int escolha){
     
     //Ajeitando antes de começar
     Pessoa* pessoasCopia = new Pessoa[tamanho];
@@ -83,7 +83,7 @@ void InsertionSort(Pessoa pessoas[], int tamanho){
         Pessoa chave = pessoasCopia[i];
         int j = i-1;
 
-        while(j >=0 && chave.GetIdade() < pessoasCopia[j].GetIdade()){
+        while(j >=0 && chave.EscolhaDado(escolha)  < pessoasCopia[j].EscolhaDado(escolha) ){
             pessoasCopia[j+1] = pessoasCopia[j];
             j--;
         }
@@ -108,7 +108,7 @@ void InsertionSort(Pessoa pessoas[], int tamanho){
 
 
 //Selection Sort:
-void SelectionSort(Pessoa pessoas[], int tamanho){
+void SelectionSort(Pessoa pessoas[], int tamanho, int escolha){
     
     //Ajeitando antes de começar
     Pessoa* pessoasCopia = new Pessoa[tamanho];
@@ -125,7 +125,7 @@ void SelectionSort(Pessoa pessoas[], int tamanho){
         
 
         for(int j = i+1; j< tamanho - 1; j++){
-            if(pessoasCopia[menor].GetIdade() > pessoasCopia[j].GetIdade()){
+            if(pessoasCopia[menor].EscolhaDado(escolha)  > pessoasCopia[j].EscolhaDado(escolha) ){
                 menor = j;
             }
         }
@@ -152,7 +152,7 @@ void SelectionSort(Pessoa pessoas[], int tamanho){
 }
 
 //MergeSort
-void Merge(Pessoa pessoas[], int inicio, int meio, int fim){
+void Merge(Pessoa pessoas[], int inicio, int meio, int fim, int escolha){
     int tamanhoEsq = meio - inicio +1;
     int tamanhoDir = fim - meio;
 
@@ -171,7 +171,7 @@ void Merge(Pessoa pessoas[], int inicio, int meio, int fim){
 
     while(i < tamanhoEsq && j < tamanhoDir ){
 
-        if(pessoasEsq[i].GetIdade() <= pessoasDir[j].GetIdade()){
+        if(pessoasEsq[i].EscolhaDado(escolha)  <= pessoasDir[j].EscolhaDado(escolha) ){
             pessoas[k] = pessoasEsq[i];
             i++;
             
@@ -203,17 +203,17 @@ void Merge(Pessoa pessoas[], int inicio, int meio, int fim){
 
 }
 
-void MergeSort(Pessoa pessoas[], int inicio, int fim){
+void MergeSort(Pessoa pessoas[], int inicio, int fim, int escolha){
     if(inicio < fim){
         int meio = inicio + (fim-inicio)/2;
-        MergeSort(pessoas, inicio, meio);
-        MergeSort(pessoas,meio+1, fim);
+        MergeSort(pessoas, inicio, meio, escolha);
+        MergeSort(pessoas,meio+1, fim, escolha);
 
-        Merge(pessoas,inicio,meio,fim);
+        Merge(pessoas,inicio,meio,fim, escolha);
     }
 }
 
-void IniciarMergeSort(Pessoa pessoas[], int tamanho){
+void IniciarMergeSort(Pessoa pessoas[], int tamanho, int escolha){
   //Ajeitando antes de começar
     Pessoa* pessoasCopia = new Pessoa[tamanho];
 
@@ -224,7 +224,7 @@ void IniciarMergeSort(Pessoa pessoas[], int tamanho){
     //Salva o tempo antes de começar
     clock_t tempo = clock();
 
-    MergeSort(pessoasCopia,0,tamanho-1);
+    MergeSort(pessoasCopia,0,tamanho-1, escolha);
 
     tempo = clock() - tempo;
 
@@ -240,13 +240,13 @@ void IniciarMergeSort(Pessoa pessoas[], int tamanho){
 
 
 //Quick Sort
-int particao(Pessoa pessoas[], int inicio, int fim){
-    int pivo = pessoas[fim].GetIdade();
+int particao(Pessoa pessoas[], int inicio, int fim, int escolha){
+    int pivo = pessoas[fim].EscolhaDado(escolha) ;
 
     int i = inicio-1;
 
     for(int j = inicio; j < fim; j++ ){
-        if(pessoas[j].GetIdade() <= pivo){
+        if(pessoas[j].EscolhaDado(escolha)  <= pivo){
             i++;
             swap(pessoas[i],pessoas[j]);
 
@@ -261,17 +261,17 @@ int particao(Pessoa pessoas[], int inicio, int fim){
     return i;
 }
 
-void QuickSort(Pessoa pessoas[], int inicio, int fim){
+void QuickSort(Pessoa pessoas[], int inicio, int fim, int escolha){
     if(inicio < fim){
-        int pivoPosicao = particao(pessoas, inicio, fim);
+        int pivoPosicao = particao(pessoas, inicio, fim, escolha);
 
-        QuickSort(pessoas, inicio, pivoPosicao-1);
-        QuickSort(pessoas, pivoPosicao+1, fim);
+        QuickSort(pessoas, inicio, pivoPosicao-1, escolha);
+        QuickSort(pessoas, pivoPosicao+1, fim, escolha);
 
     }
 }
 
-void IniciarQuickSort(Pessoa pessoas[], int tamanho){
+void IniciarQuickSort(Pessoa pessoas[], int tamanho, int escolha){
     //Ajeitando antes de começar
     Pessoa* pessoasCopia = new Pessoa[tamanho];
 
@@ -282,7 +282,7 @@ void IniciarQuickSort(Pessoa pessoas[], int tamanho){
     //Salva o tempo antes de começar
     clock_t tempo = clock();
 
-    QuickSort(pessoasCopia, 0, tamanho-1);
+    QuickSort(pessoasCopia, 0, tamanho-1, escolha);
 
     tempo = clock() - tempo;
 
