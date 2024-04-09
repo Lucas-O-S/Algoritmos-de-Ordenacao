@@ -146,10 +146,10 @@ int main()
 
     cout << "\n";
 
-    //BubbleSort(arranjoPessoas, tamanhoVetor,escolha);
-    //InsertionSort(arranjoPessoas, tamanhoVetor,escolha);
-    //SelectionSort(arranjoPessoas, tamanhoVetor,escolha);
-    //IniciarMergeSort(arranjoPessoas,tamanhoVetor,escolha);
+    BubbleSort(arranjoPessoas, tamanhoVetor,escolha);
+    InsertionSort(arranjoPessoas, tamanhoVetor,escolha);
+    SelectionSort(arranjoPessoas, tamanhoVetor,escolha);
+    IniciarMergeSort(arranjoPessoas,tamanhoVetor,escolha);
     IniciarQuickSort(arranjoPessoas,tamanhoVetor,escolha);
     
     //////////////////////////////////////////////////////////////////////////////////////
