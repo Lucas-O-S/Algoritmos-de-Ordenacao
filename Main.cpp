@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 
 #include "ClassePessoa.cpp"
 #include "DadosNumeriocos.cpp"
@@ -26,6 +27,7 @@ int DefinirTamanhoVetor(string nomeArquivo){
     //string para o dados de uma linha
     string linha;
    
+
    //Verifica o arquivo e enquanto receber linhas coloca o conteudo nela e adiciona +1 no tamanho
     while(getline(arquivo, linha )){
         tamanhoVetor ++;
@@ -33,7 +35,7 @@ int DefinirTamanhoVetor(string nomeArquivo){
     }
 
     //Retorna valor do tamanho do vetor
-    return tamanhoVetor;
+    return tamanhoVetor-1;
     
 }
 
@@ -49,9 +51,16 @@ void CriarVetorPessoa(string nomeArquivo,  Pessoa* arranjoPessoas){
 
     int indice = 0;
 
+    bool ignorarPrimeiro = false;
+
+
     //Enquanto receber linhas ira adicionar novos membro ao arranjo
       while(getline(arquivo, linha )){
 
+        if(!ignorarPrimeiro){
+            ignorarPrimeiro = true;
+            continue;
+        }    
         //Strean de dados
         istringstream ss(linha);
 
@@ -135,10 +144,45 @@ int main()
 
     }
 
-    BubbleSort(arranjoPessoas, tamanhoVetor,escolha);
-    InsertionSort(arranjoPessoas, tamanhoVetor,escolha);
-    SelectionSort(arranjoPessoas, tamanhoVetor,escolha);
-    IniciarMergeSort(arranjoPessoas,tamanhoVetor,escolha);
+    cout << "\n";
+
+    //BubbleSort(arranjoPessoas, tamanhoVetor,escolha);
+    //InsertionSort(arranjoPessoas, tamanhoVetor,escolha);
+    //SelectionSort(arranjoPessoas, tamanhoVetor,escolha);
+    //IniciarMergeSort(arranjoPessoas,tamanhoVetor,escolha);
     IniciarQuickSort(arranjoPessoas,tamanhoVetor,escolha);
     
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    cout << "\n";
+
+    //Devolve a média da
+    double idadeMedia = calcularMedia(arranjoPessoas, tamanhoVetor, 1);
+    double pesoMedia = calcularMedia(arranjoPessoas, tamanhoVetor, 2);
+    double alturaMedia = calcularMedia(arranjoPessoas, tamanhoVetor, 3);
+
+    //Devolve mediana
+    QuickSort(arranjoPessoas,0,tamanhoVetor, 1); 
+    double idadeMediana = calcularMediana(arranjoPessoas,tamanhoVetor,1);
+
+    QuickSort(arranjoPessoas,0,tamanhoVetor, 2); 
+    double pesoMediana = calcularMediana(arranjoPessoas,tamanhoVetor,2);
+
+    QuickSort(arranjoPessoas,0,tamanhoVetor, 3); 
+    double alturaMediana = calcularMediana(arranjoPessoas,tamanhoVetor,3);
+
+    double idadeDesvio = CalcularDesvio(arranjoPessoas,tamanhoVetor, 1, idadeMedia);
+    double pesoDesvio = CalcularDesvio(arranjoPessoas,tamanhoVetor, 2, pesoMedia);
+    double alturaDesvio = CalcularDesvio(arranjoPessoas,tamanhoVetor, 3, alturaMedia);
+
+
+
+    cout << fixed << setprecision(2) << "Idade: \n Media - " << idadeMedia << "\n Mediana: " << idadeMediana << "\n Desvio Padrao: " << idadeDesvio << "\n" << endl;
+    cout << fixed << setprecision(2) << "Peso: \n Media - " << pesoMedia  << "\n Mediana: " << pesoMediana << "\n Desvio Padrao: " << pesoDesvio <<  "\n" << endl;
+    cout << fixed << setprecision(2) << "Altura: \n Media - " << alturaMedia << "\n Mediana: " << alturaMediana << "\n Desvio Padrao: " << alturaDesvio <<  "\n" << endl;
+
+
+
+
+    cout << "";
 }

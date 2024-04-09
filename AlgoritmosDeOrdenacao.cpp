@@ -290,6 +290,7 @@ void IniciarQuickSort(Pessoa pessoas[], int tamanho, int escolha){
 
     cout << "Quick sort levou " << tempoSegundos  << " segundos).\n";
 
-   // ExibirArranjo(pessoasCopia, tamanho);
+   //ExibirArranjo(pessoasCopia, tamanho);
 
 }
+
